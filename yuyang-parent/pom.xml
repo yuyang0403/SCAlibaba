@@ -24,6 +24,7 @@
         <discovery.version>6.0.1</discovery.version>
         <alibaba-nacos.version>2.1.0.RELEASE</alibaba-nacos.version>
         <spring-cloud.version>Hoxton.RELEASE</spring-cloud.version>
+        <spring.redission.version>3.12.5</spring.redission.version>
     </properties>
 
     <dependencies>
@@ -63,6 +64,11 @@
                 <groupId>com.nepxion</groupId>
                 <artifactId>discovery-plugin-config-center-starter-nacos</artifactId>
                 <version>${discovery.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${spring.redission.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
