@@ -25,6 +25,7 @@
         <alibaba-nacos.version>2.1.0.RELEASE</alibaba-nacos.version>
         <spring-cloud.version>Hoxton.RELEASE</spring-cloud.version>
         <spring.redission.version>3.12.5</spring.redission.version>
+        <swagger.version>2.9.2</swagger.version>
     </properties>
 
     <dependencies>
@@ -69,6 +70,17 @@
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson-spring-boot-starter</artifactId>
                 <version>${spring.redission.version}</version>
+            </dependency>
+            <!-- 使用 swagger高版本-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

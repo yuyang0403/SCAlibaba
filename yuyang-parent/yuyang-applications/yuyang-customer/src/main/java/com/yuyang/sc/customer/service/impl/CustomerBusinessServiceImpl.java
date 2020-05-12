@@ -1,6 +1,8 @@
 package com.yuyang.sc.customer.service.impl;
 
+import com.yuyang.sc.common.feign.customer.CustomerBusinessFeign;
 import com.yuyang.sc.customer.service.CustomerBusinessService;
+import com.yuyang.sc.customer.test.ProxyClass;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.slf4j.Logger;
@@ -23,10 +25,9 @@ public class CustomerBusinessServiceImpl implements CustomerBusinessService {
     RedisTemplate redisTemplate;
     @Autowired
     RedissonClient redissonClient;
-
-
-    @Override
-    public void test() {
+    @Autowired
+    ProxyClass proxyClass;
+    public void testqqqq() {
         RLock rLock = redissonClient.getLock("test1");
         rLock.lock(10000,TimeUnit.MILLISECONDS);
         try {
@@ -43,5 +44,11 @@ public class CustomerBusinessServiceImpl implements CustomerBusinessService {
             rLock.unlock();
         }
         LOGGER.info("------------");
+    }
+
+    @Override
+    public void test() {
+        LOGGER.info("调用feign接口");
+        proxyClass.proxyTest();
     }
 }
