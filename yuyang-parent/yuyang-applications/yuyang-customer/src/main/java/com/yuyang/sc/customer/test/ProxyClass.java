@@ -9,6 +9,6 @@ public class ProxyClass {
     @Autowired
     CustomerBusinessFeign customerBusinessFeign;
     public void proxyTest(){
-        customerBusinessFeign.test1();
+        System.out.println(customerBusinessFeign.test1());
     }
 }

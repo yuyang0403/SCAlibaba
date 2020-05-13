@@ -1,5 +1,6 @@
 package com.yuyang.sc.customer;
 
+import com.alibaba.csp.sentinel.transport.config.TransportConfig;
 import com.yuyang.sc.common.util.redis.RedisCacheAutoConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
