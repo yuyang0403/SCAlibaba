@@ -1,10 +1,14 @@
 package com.yuyang.sc.customer.controller;
 
+import com.yuyang.sc.common.entity.customer.model.TestModel;
 import com.yuyang.sc.common.feign.customer.CustomerBusinessFeign;
 import com.yuyang.sc.customer.service.CustomerBusinessService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 /**
  * @author yuyang
@@ -29,5 +33,11 @@ public class CustomerBusinessController implements CustomerBusinessFeign {
     @Override
     public String test1() {
         return "this is test1";
+    }
+
+    @PostMapping(value="/saveTest")
+    @ApiOperation(value = "数据库保存测试",notes = "数据库保存测试",response = String.class)
+    public Integer saveTest(@RequestBody TestModel testModel){
+        return customerBusinessService.saveTest(testModel);
     }
 }

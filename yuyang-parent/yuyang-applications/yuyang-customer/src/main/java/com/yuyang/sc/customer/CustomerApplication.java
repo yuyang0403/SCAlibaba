@@ -2,6 +2,7 @@ package com.yuyang.sc.customer;
 
 import com.alibaba.csp.sentinel.transport.config.TransportConfig;
 import com.yuyang.sc.common.util.redis.RedisCacheAutoConfiguration;
+import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -21,6 +22,7 @@ import org.springframework.context.annotation.Import;
 @Import({RedisCacheAutoConfiguration.class})
 @ComponentScan(basePackages = "com.yuyang.sc")
 @EnableFeignClients(basePackages = "com.yuyang.sc.common.feign")
+@MapperScan("com.yuyang.sc.customer.mapper")
 public class CustomerApplication {
     private static final Logger log = LoggerFactory.getLogger(CustomerApplication.class);
 

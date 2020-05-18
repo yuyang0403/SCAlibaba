@@ -2,11 +2,6 @@ server:
     port: 41111
     servlet:
         context-path: /customer
-management:
-    endpoints:
-        web:
-            exposure:
-                include: '*'
 spring:
     application:
         name: yuyang-customer
@@ -15,5 +10,14 @@ spring:
             config:
                 group: applications
                 file-extension: yml
+                encode: UTF-8
+                refresh-enabled: true
+                config-retry-time: 3
+                # \u8001\u7248\u672Cshared-dataids \u5728\u8FD9\u91CC\u5DF2\u7ECF\u88AB\u5E9F\u5F03
+                shared-configs[0]:
+                  # data-id\u8981\u6C42\u5FC5\u987B\u6709\u540E\u7F00\u540D\uFF08\u8FD9\u4E2A\u8981\u6C42\u5F88\u6B63\u5E38\uFF0C\u4F46\u662F\u914D\u5408\u914D\u7F6E\u4E2D\u5FC3\u4E00\u70B9\u4E5F\u4E0D\u597D\u7528\uFF09
+                  data-id: yuyang.yml
+                  group: applications
+                  refresh: true
     profiles:
         active: dev

@@ -1,6 +1,8 @@
 package com.yuyang.sc.customer.service.impl;
 
+import com.yuyang.sc.common.entity.customer.model.TestModel;
 import com.yuyang.sc.common.feign.customer.CustomerBusinessFeign;
+import com.yuyang.sc.customer.mapper.TestModelMapper;
 import com.yuyang.sc.customer.service.CustomerBusinessService;
 import com.yuyang.sc.customer.test.ProxyClass;
 import org.redisson.api.RLock;
@@ -10,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.concurrent.TimeUnit;
 
@@ -27,6 +30,9 @@ public class CustomerBusinessServiceImpl implements CustomerBusinessService {
     RedissonClient redissonClient;
     @Autowired
     ProxyClass proxyClass;
+
+    @Autowired
+    TestModelMapper testModelMapper;
     public void testqqqq() {
         RLock rLock = redissonClient.getLock("test1");
         rLock.lock(10000,TimeUnit.MILLISECONDS);
@@ -50,5 +56,11 @@ public class CustomerBusinessServiceImpl implements CustomerBusinessService {
     public void test() {
         LOGGER.info("调用feign接口");
         proxyClass.proxyTest();
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public Integer saveTest(TestModel testModel) {
+        return testModelMapper.insertSelective(testModel);
     }
 }
