@@ -1,0 +1,18 @@
+server:
+  port: 41121
+spring:
+  application:
+    name: yuyang-zuul
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        group: applications
+        file-extension: yml
+        refresh-enabled: true
+        config-retry-time: 3
+        shared-configs[0]:
+          data-id: yuyang.yml
+          group: applications
+          refresh: true
