@@ -24,9 +24,36 @@
             <groupId>com.nepxion</groupId>
             <artifactId>discovery-plugin-strategy-starter-zuul</artifactId>
         </dependency>
+
         <dependency>
             <groupId>com.nepxion</groupId>
             <artifactId>discovery-plugin-strategy-starter-service-sentinel</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.nepxion</groupId>
+            <artifactId>discovery-plugin-strategy-sentinel-starter-nacos</artifactId>
+            <version>${discovery.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-zuul2-adapter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-transport-simple-http</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-okhttp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yuyang.sc</groupId>
+            <artifactId>common-util</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 

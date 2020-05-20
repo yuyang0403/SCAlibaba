@@ -1,5 +1,6 @@
 package com.yuyang.sc.customer.config;
 
+import com.yuyang.sc.common.util.exception.ServiceHandlerExceptionResolver;
 import com.yuyang.sc.customer.service.impl.CustomerBusinessServiceImpl;
 import feign.Feign;
 import feign.codec.Encoder;
@@ -12,6 +13,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.cloud.openfeign.FeignAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 import java.util.concurrent.TimeUnit;
 

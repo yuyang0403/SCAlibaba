@@ -1,6 +1,10 @@
 package com.yuyang.sc.common.feign.customer;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.yuyang.sc.common.util.exception.BusinessCode;
+import com.yuyang.sc.common.util.response.ResponseResult;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,24 +18,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public interface CustomerBusinessFeign {
 
     @RequestMapping(method = RequestMethod.POST,value="/test")
-    String test();
+    ResponseResult<String> test();
     @RequestMapping(method = RequestMethod.POST,value="/test1")
-    String test1();
+    ResponseResult<String> test1();
 
 
 }
 
 @Component
 class CustomerBusinessFeignFallBack implements CustomerBusinessFeign {
+    private static final Logger LOGGER = LoggerFactory.getLogger(CustomerBusinessFeignFallBack.class);
 
     @Override
-    public String test() {
-        System.out.println("啥都没做");
-        return "fallback";
+    public ResponseResult<String> test() {
+        LOGGER.error("CustomerBusinessFeignFallBack->test");
+        return new ResponseResult<>(BusinessCode.CODE_999);
     }
 
     @Override
-    public String test1() {
-        return "fallback test1";
+    public ResponseResult<String> test1() {
+        LOGGER.error("CustomerBusinessFeignFallBack->test1");
+        return new ResponseResult<>(BusinessCode.CODE_999);
     }
 }

@@ -16,3 +16,14 @@ spring:
           data-id: yuyang.yml
           group: applications
           refresh: true
+        shared-configs[1]:
+          data-id: yuyang-zuul-sentinel.json
+          group: applications
+          refresh: true
+    sentinel:
+      datasource:
+        ds:
+          dataId: yuyang-zuul-sentinel
+          serverAddr: ${nacos.server-addr}
+          groupId: applications
+          dataType: json

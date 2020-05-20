@@ -57,6 +57,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.nepxion</groupId>
+            <artifactId>discovery-plugin-strategy-sentinel-starter-nacos</artifactId>
+        </dependency>
+
+
+        <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
         </dependency>

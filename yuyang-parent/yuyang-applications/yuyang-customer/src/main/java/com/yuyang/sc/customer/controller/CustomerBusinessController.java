@@ -2,6 +2,7 @@ package com.yuyang.sc.customer.controller;
 
 import com.yuyang.sc.common.entity.customer.model.TestModel;
 import com.yuyang.sc.common.feign.customer.CustomerBusinessFeign;
+import com.yuyang.sc.common.util.response.ResponseResult;
 import com.yuyang.sc.customer.service.CustomerBusinessService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -24,20 +25,22 @@ public class CustomerBusinessController implements CustomerBusinessFeign {
 
     @ApiOperation(value = "测试方法",notes = "测试方法",response = String.class)
     @Override
-    public String test() {
+    public ResponseResult<String> test() {
         customerBusinessService.test();
-        return "this is test me";
+        return new ResponseResult<>();
     }
 
     @ApiOperation(value = "测试方法1",notes = "测试方法1",response = String.class)
     @Override
-    public String test1() {
-        return "this is test1";
+    public ResponseResult<String> test1() {
+        return new ResponseResult<>();
     }
 
     @PostMapping(value="/saveTest")
     @ApiOperation(value = "数据库保存测试",notes = "数据库保存测试",response = String.class)
-    public Integer saveTest(@RequestBody TestModel testModel){
-        return customerBusinessService.saveTest(testModel);
+    public ResponseResult<Integer> saveTest(@RequestBody TestModel testModel){
+        ResponseResult<Integer> responseResult=new ResponseResult<>();
+        responseResult.setData(customerBusinessService.saveTest(testModel));
+        return responseResult;
     }
 }
