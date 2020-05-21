@@ -33,21 +33,12 @@ public class CustomerBusinessServiceImpl implements CustomerBusinessService {
 
     @Autowired
     TestModelMapper testModelMapper;
-    public void testqqqq() {
-        RLock rLock = redissonClient.getLock("test1");
-        rLock.lock(10000,TimeUnit.MILLISECONDS);
+    @Override
+    public void testRedission() {
         try {
-            if(rLock.tryLock(10000,1,TimeUnit.MILLISECONDS)) {
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        } finally {
-            rLock.unlock();
         }
         LOGGER.info("------------");
     }

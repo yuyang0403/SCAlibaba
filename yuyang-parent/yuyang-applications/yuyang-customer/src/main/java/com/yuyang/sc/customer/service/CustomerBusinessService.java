@@ -10,4 +10,5 @@ import com.yuyang.sc.common.entity.customer.model.TestModel;
 public interface CustomerBusinessService {
     void test();
     Integer saveTest(TestModel testModel);
+    void testRedission();
 }

@@ -33,11 +33,13 @@ public class CustomerBusinessController implements CustomerBusinessFeign {
     @ApiOperation(value = "测试方法1",notes = "测试方法1",response = String.class)
     @Override
     public ResponseResult<String> test1() {
+        customerBusinessService.testRedission();
         return new ResponseResult<>();
     }
 
-    @PostMapping(value="/saveTest")
+
     @ApiOperation(value = "数据库保存测试",notes = "数据库保存测试",response = String.class)
+    @Override
     public ResponseResult<Integer> saveTest(@RequestBody TestModel testModel){
         ResponseResult<Integer> responseResult=new ResponseResult<>();
         responseResult.setData(customerBusinessService.saveTest(testModel));

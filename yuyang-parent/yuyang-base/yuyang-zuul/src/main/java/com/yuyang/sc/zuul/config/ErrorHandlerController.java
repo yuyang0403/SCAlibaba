@@ -34,5 +34,13 @@ public class ErrorHandlerController implements ErrorController {
         responseResult.setMessage(MessageHelper.getInstance().getMessage(String.valueOf(BusinessCode.CODE_1001), StringUtils.EMPTY));
         return responseResult;
     }
+
+    @RequestMapping("/block/error")
+    public ResponseResult<Void> blockError(){
+        ResponseResult<Void> responseResult=new ResponseResult<>();
+        responseResult.setCode(BusinessCode.CODE_999);
+        responseResult.setMessage(MessageHelper.getInstance().getMessage(String.valueOf(BusinessCode.CODE_999), StringUtils.EMPTY));
+        return responseResult;
+    }
  
 }

@@ -25,5 +25,5 @@ spring:
         ds:
           dataId: yuyang-zuul-sentinel
           serverAddr: ${nacos.server-addr}
-          groupId: applications
+          group: applications
           dataType: json
