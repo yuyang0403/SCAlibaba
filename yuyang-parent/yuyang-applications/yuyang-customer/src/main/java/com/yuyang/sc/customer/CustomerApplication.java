@@ -10,6 +10,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  * @author yuyang
@@ -22,6 +23,7 @@ import org.springframework.context.annotation.Import;
 @ComponentScan(basePackages = "com.yuyang.sc")
 @EnableFeignClients(basePackages = "com.yuyang.sc.common.feign")
 @MapperScan("com.yuyang.sc.customer.mapper")
+@EnableAsync
 public class CustomerApplication {
     private static final Logger log = LoggerFactory.getLogger(CustomerApplication.class);
 

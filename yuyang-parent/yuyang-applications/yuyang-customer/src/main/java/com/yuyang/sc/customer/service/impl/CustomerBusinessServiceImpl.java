@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,14 +34,36 @@ public class CustomerBusinessServiceImpl implements CustomerBusinessService {
 
     @Autowired
     TestModelMapper testModelMapper;
+
+
+    @Async
     @Override
     public void testRedission() {
+        boolean needUnLock=true;
+        LOGGER.info("开始获取锁-----");
+        RLock rLock = redissonClient.getLock("myLock");
+        LOGGER.info("是否有锁？："+rLock.isLocked());
         try {
-            Thread.sleep(5000);
+            if(rLock.tryLock(10000,TimeUnit.MILLISECONDS)) {
+                LOGGER.info("枷锁成功");
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }else{
+                LOGGER.info("等待超时，加锁失败");
+                needUnLock=false;
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
+        } finally {
+            if(rLock.isLocked()&&needUnLock) {
+                rLock.unlock();
+                LOGGER.info("释放锁："+rLock.getName());
+            }
         }
-        LOGGER.info("------------");
+        LOGGER.info("执行完毕-------");
     }
 
     @Override
