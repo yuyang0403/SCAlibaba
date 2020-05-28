@@ -39,7 +39,6 @@ public class CustomerBusinessServiceImpl implements CustomerBusinessService {
     @Async
     @Override
     public void testRedission() {
-        boolean needUnLock=true;
         LOGGER.info("开始获取锁-----");
         RLock rLock = redissonClient.getLock("myLock");
         LOGGER.info("是否有锁？："+rLock.isLocked());
@@ -53,12 +52,11 @@ public class CustomerBusinessServiceImpl implements CustomerBusinessService {
                 }
             }else{
                 LOGGER.info("等待超时，加锁失败");
-                needUnLock=false;
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-            if(rLock.isLocked()&&needUnLock) {
+            if(rLock.isLocked()) {
                 rLock.unlock();
                 LOGGER.info("释放锁："+rLock.getName());
             }
