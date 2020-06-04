@@ -42,6 +42,10 @@
             <appender-ref ref="console"/>
             <appender-ref ref="async_log"/>
         </logger>
+        <logger name="com.alibaba.nacos.client" level="warn" additivity="false">
+            <appender-ref ref="console"/>
+            <appender-ref ref="async_log"/>
+        </logger>
     </springProfile>
     <springProfile name="prod,formal">
         <root level="info">
