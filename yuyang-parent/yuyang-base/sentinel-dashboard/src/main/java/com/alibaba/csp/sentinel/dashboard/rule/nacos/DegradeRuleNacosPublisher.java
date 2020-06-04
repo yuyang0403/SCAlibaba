@@ -3,7 +3,6 @@ package com.alibaba.csp.sentinel.dashboard.rule.nacos;
 import com.alibaba.csp.sentinel.dashboard.datasource.entity.rule.DegradeRuleEntity;
 import com.alibaba.csp.sentinel.dashboard.rule.DynamicRulePublisher;
 import com.alibaba.csp.sentinel.datasource.Converter;
-import com.alibaba.csp.sentinel.slots.block.degrade.DegradeRule;
 import com.alibaba.csp.sentinel.util.AssertUtil;
 import com.alibaba.nacos.api.config.ConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +22,13 @@ public class DegradeRuleNacosPublisher implements DynamicRulePublisher<List<Degr
     private ConfigService configService;
     @Autowired
     private Converter<List<DegradeRuleEntity>, String> degradeConverter;
-
+    /**
+     * 你的降级规则的后缀
+     */
     public static final String FLOW_DATA_ID_POSTFIX = "-sentinel-degrade";
+    /**
+     * 你的降级规则groupId
+     */
     public static final String GROUP_ID = "default";
 
     @Override
