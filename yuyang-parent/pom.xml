@@ -6,6 +6,7 @@
     <modules>
         <module>yuyang-commons</module>
         <module>yuyang-base</module>
+        <module>yuyang-applications</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -19,17 +20,18 @@
     <version>1.0.0</version>
     <name>yuyang-parent</name>
 
+    <!-- 所有依赖的jar版本需要在这里维护 -->
     <properties>
         <java.version>1.8</java.version>
         <alibaba-spring-cloud.version>2.2.0.RELEASE</alibaba-spring-cloud.version>
         <discovery.version>6.0.1</discovery.version>
-        <alibaba-nacos.version>2.1.0.RELEASE</alibaba-nacos.version>
+        <alibaba-nacos.version>2.2.1.RELEASE</alibaba-nacos.version>
         <spring-cloud.version>Hoxton.RELEASE</spring-cloud.version>
         <spring.redission.version>3.12.5</spring.redission.version>
         <swagger.version>2.9.2</swagger.version>
         <spring-boot.mybatis>2.1.2</spring-boot.mybatis>
         <alibaba.druid>1.1.22</alibaba.druid>
-        <alibaba.zuul2.adapter>1.7.2</alibaba.zuul2.adapter>
+        <alibaba.gateway.adapter>1.8.0</alibaba.gateway.adapter>
     </properties>
 
     <dependencies>
@@ -112,8 +114,8 @@
             </dependency>
             <dependency>
                 <groupId>com.alibaba.csp</groupId>
-                <artifactId>sentinel-zuul2-adapter</artifactId>
-                <version>${alibaba.zuul2.adapter}</version>
+                <artifactId>sentinel-spring-cloud-gateway-adapter</artifactId>
+                <version>${alibaba.gateway.adapter}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

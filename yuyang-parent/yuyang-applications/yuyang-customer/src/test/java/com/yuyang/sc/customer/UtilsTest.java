@@ -14,26 +14,69 @@ import java.io.InputStreamReader;
 import java.util.List;
 
 public class UtilsTest {
-    /**
-     * 批量重命名文件
-     * @throws Exception
-     */
-    @Test
-    public void renameFile()throws Exception{
-        String filePath="E:\\DNF\\86\\Script\\equipment\\character\\partset";
-        File directory=new File(filePath);
-        if(directory.exists()&&directory.isDirectory()){
+
+
+    private void readFile(File file){
+        if(file.exists()&&file.isDirectory()){
             //获取文件列表
-            File [] files=directory.listFiles();
+            File [] files=file.listFiles();
             if(files!=null&&files.length>0){
                 for (int i = 0; i < files.length; i++) {
-                    String newFileName=files[i].getName().replaceAll("\\.","_cre\\.");
-                    File newFile=new File(filePath+"\\"+newFileName);
-                    FileUtils.moveFile(files[i],newFile);
+                    File everyFile=files[i];
+                    if(everyFile.isDirectory()){
+                        readFile(everyFile);
+                    }else{
+                        if(everyFile.getName().contains("equ")) {
+                            System.out.println(everyFile.getName().replaceAll("\\.equ", "") + "\t`" + everyFile.getAbsolutePath() + "`");
+                        }
+                    }
                 }
+            }
+        }else{
+            if(file.getName().contains("equ")) {
+                System.out.println(file.getName().replaceAll("\\.equ", "") + "\t`" + file.getAbsolutePath() + "`");
             }
         }
     }
+
+    private void renameFile(File file){
+        if(file.exists()&&file.isDirectory()){
+            //获取文件列表
+            File [] files=file.listFiles();
+            if(files!=null&&files.length>0){
+                for (int i = 0; i < files.length; i++) {
+                    File everyFile=files[i];
+                    if(everyFile.isDirectory()){
+                        renameFile(everyFile);
+                    }else{
+                       File newFile=new File(everyFile.getParent()+"/1"+everyFile.getName());
+                       System.out.println(everyFile.renameTo(newFile));
+                    }
+                }
+            }
+        }else{
+            File newFile=new File(file.getParent()+"/1"+file.getName());
+            System.out.println(file.renameTo(newFile));
+        }
+    }
+
+    /**
+     * 根据文件列表生成lst
+     */
+    @Test
+    public void whileFileList(){
+        String filePath="E:\\DNF\\完美安图恩\\Script\\equipment";
+        File directory=new File(filePath);
+        readFile(directory);
+    }
+
+    @Test
+    public void whileRenameFile(){
+        String filePath="E:\\DNF\\完美安图恩\\Script\\equipment";
+        File directory=new File(filePath);
+        renameFile(directory);
+    }
+
 
     /**
      * 针对文件替换内容

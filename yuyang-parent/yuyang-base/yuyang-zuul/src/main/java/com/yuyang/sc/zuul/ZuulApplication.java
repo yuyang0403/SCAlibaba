@@ -1,12 +1,10 @@
 package com.yuyang.sc.zuul;
 
-import com.yuyang.sc.common.util.config.ServerConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
-import org.springframework.context.annotation.Import;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * @author yuyang
@@ -14,8 +12,7 @@ import org.springframework.context.annotation.Import;
  * @Description
  */
 @SpringBootApplication
-@EnableZuulProxy
-@Import(ServerConfiguration.class)
+@EnableDiscoveryClient
 public class ZuulApplication {
     private static final Logger log = LoggerFactory.getLogger(ZuulApplication.class);
 
