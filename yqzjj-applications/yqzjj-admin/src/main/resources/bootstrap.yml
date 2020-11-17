@@ -1,0 +1,20 @@
+server:
+    port: 41112
+    servlet:
+        context-path: /admin
+spring:
+    application:
+        name: yqzjj-admin
+    cloud:
+      nacos:
+          config:
+              group: applications
+              encode: UTF-8
+              refresh-enabled: true
+              config-retry-time: 3
+              shared-configs[0]:
+                data-id: yqzjj-common.yml
+                group: applications
+                refresh: true
+    profiles:
+        active: dev
