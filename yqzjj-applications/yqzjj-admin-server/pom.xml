@@ -7,9 +7,9 @@
         <artifactId>yqzjj-applications</artifactId>
         <version>1.0.0</version>
     </parent>
-    <artifactId>yqzjj-admin</artifactId>
+    <artifactId>yqzjj-admin-server</artifactId>
     <version>1.0.0</version>
-    <name>yqzjj-admin</name>
+    <name>yqzjj-admin-server</name>
 
     <properties>
         <java.version>1.8</java.version>

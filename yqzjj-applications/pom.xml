@@ -10,6 +10,7 @@
     <artifactId>yqzjj-applications</artifactId>
     <version>1.0.0</version>
     <name>yqzjj-applications</name>
+    <packaging>pom</packaging>
 
     <properties>
         <java.version>1.8</java.version>
