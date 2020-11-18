@@ -1,6 +1,0 @@
-spring:
-    cloud:
-        nacos:
-          discovery:
-            server-addr: www.javaavaj.com:32222
-          server-addr: www.javaavaj.com:32222
